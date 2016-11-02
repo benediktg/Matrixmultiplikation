@@ -6,28 +6,28 @@
 
 typedef struct Matrix
 {
-    size_t rows;
-    size_t columns;
+    size_t rowCount;
+    size_t columnCount;
     double *data;
 } Matrix;
 
 Matrix createMatrix(size_t rowCount, size_t columnCount)
 {
     Matrix result;
-    result.rows = rowCount;
-    result.columns = columnCount;
+    result.rowCount = rowCount;
+    result.columnCount = columnCount;
     result.data = malloc(rowCount * columnCount * sizeof(double));
     return result;
 }
 
 double getElementValue(Matrix matrix, int i, int j)
 {
-    return matrix.data[matrix.rows * i + j];
+    return matrix.data[matrix.rowCount * i + j];
 }
 
 void setElementValue(Matrix *matrix, int i, int j, double value)
 {
-    matrix->data[matrix->rows * i + j] = value;
+    matrix->data[matrix->rowCount * i + j] = value;
 }
 
 #endif // MATRIX_H
