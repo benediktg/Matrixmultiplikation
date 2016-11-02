@@ -22,7 +22,10 @@ int main(int argc, char **argv)
     };
     Matrix m2 = newMatrix(3, 3);
     m2.data = d2;
+    prettyPrint(m1);
+    prettyPrint(m2);
 
     Matrix result = standardMatrixMul(m1, m2);
+    prettyPrint(result);
     return 0;
 }

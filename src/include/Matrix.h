@@ -29,4 +29,9 @@ double getElementValue(Matrix matrix, int i, int j);
  */
 void setElementValue(Matrix *matrix, int i, int j, double value);
 
+/**
+ * Prints a representation of the matrix to stdout.
+ */
+void prettyPrint(Matrix matrix);
+
 #endif // MATRIX_H

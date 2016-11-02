@@ -49,3 +49,7 @@ void setElementValue(Matrix *matrix, int i, int j, double value)
     }
     matrix->data[matrix->columnCount * i + j] = value;
 }
+
+void prettyPrint(Matrix matrix)
+{
+}
