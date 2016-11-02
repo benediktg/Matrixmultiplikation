@@ -1,9 +1,11 @@
 CC=gcc
-CFLAGS="-Wall"
+CFLAGS=-Wall -std=c99
+SRCDIR=src
+INCLUDEDIR=src/include
 
 debug:clean
-	$(CC) $(CFLAGS) -g -o matrixmultiplikation main.c
+	$(CC) $(CFLAGS) -g -Wextra $(SRCDIR)/*.c $(INCLUDEDIR)/*.c
 stable:clean
-	$(CC) $(CFLAGS) -o matrixmultiplikation main.c
+	$(CC) $(CFLAGS) $(SRCDIR)/*.c $(INCLUDEDIR)/*.c
 clean:
-	rm -vfr *~ matrixmultiplikation
+	rm -vfr *~ a.out
