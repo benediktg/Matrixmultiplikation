@@ -8,16 +8,16 @@
 int main(void)
 {
     double d1[] = {
-        1, 2, 3,
-        4, 5, 6,
-        7, 8, 9,
+        2, 0, 0,
+        0, 2, 0,
+        0, 0, 3,
     };
     Matrix m1 = newMatrix(3, 3);
     m1.data = d1;
     double d2[] = {
-        11, 12, 13,
-        14, 15, 16,
-        17, 18, 19,
+        3, 0, 0,
+        0, 2, 0,
+        0, 0, 2,
     };
     Matrix m2 = newMatrix(3, 3);
     m2.data = d2;
