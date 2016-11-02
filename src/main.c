@@ -1,7 +1,7 @@
 #include "include/Matrix.h"
-#include "standard_mmul.c"
-#include "optimized_mmul.c"
-#include "parallel_mmul.c"
+#include "standard_mmul.h"
+#include "optimized_mmul.h"
+#include "parallel_mmul.h"
 
 #include <stdio.h>
 #include <stdlib.h>
