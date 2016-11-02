@@ -1,6 +1,0 @@
-#ifndef PARALLEL_MMUL_H
-#define PARALLEL_MMUL_H
-
-
-
-#endif // PARALLEL_MMUL_H
