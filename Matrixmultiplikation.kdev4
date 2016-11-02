@@ -1,0 +1,4 @@
+[Project]
+Name=Matrixmultiplikation
+Manager=KDevCustomMakeManager
+VersionControl=kdevgit
