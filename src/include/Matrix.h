@@ -1,17 +1,16 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-#include <stddef.h>
 #include <stdlib.h>
 
 typedef struct Matrix
 {
-    size_t rowCount;
-    size_t columnCount;
+    int rowCount;
+    int columnCount;
     double *data;
 } Matrix;
 
-Matrix createMatrix(size_t rowCount, size_t columnCount)
+Matrix createMatrix(int rowCount, int columnCount)
 {
     Matrix result;
     result.rowCount = rowCount;
