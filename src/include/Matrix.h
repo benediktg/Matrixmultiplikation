@@ -22,12 +22,12 @@ Matrix createMatrix(size_t rowCount, size_t columnCount)
 
 double getElementValue(Matrix matrix, int i, int j)
 {
-    return matrix.data[matrix.rowCount * i + j];
+    return matrix.data[matrix.columnCount * i + j];
 }
 
 void setElementValue(Matrix *matrix, int i, int j, double value)
 {
-    matrix->data[matrix->rowCount * i + j] = value;
+    matrix->data[matrix->columnCount * i + j] = value;
 }
 
 #endif // MATRIX_H
