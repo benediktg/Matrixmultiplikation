@@ -49,4 +49,12 @@ void setElementValue(Matrix *matrix, int i, int j, double value)
 
 void prettyPrint(Matrix matrix)
 {
+    for (int i = 0; i < matrix.rowCount; ++i) {
+        printf("[ ");
+        for (int j = 0; j < matrix.columnCount; ++j) {
+            printf("%.1lf ", getElementValue(matrix, i, j));
+        }
+        printf("]\n");
+    }
+    printf("\n");
 }
