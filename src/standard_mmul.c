@@ -6,10 +6,10 @@
 Matrix standardMatrixMul(Matrix a, Matrix b)
 {
     if (a.columnCount != b.rowCount) {
-        return createMatrix(0, 0);
+        return newMatrix(0, 0);
     }
 
-    Matrix result = createMatrix(a.rowCount, b.columnCount);
+    Matrix result = newMatrix(a.rowCount, b.columnCount);
     double sum = 0.0;
     for (int i = 0; i < a.rowCount; ++i) {
         for (int k = 0; k < b.columnCount; ++k) {
