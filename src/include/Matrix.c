@@ -25,12 +25,12 @@ bool isNullMatrix(Matrix m)
 
 double getElementValue(Matrix matrix, int i, int j)
 {
-    if ((i < 0) || (j < 0)) {
+    if (isNullMatrix(matrix)) {
+        printf("Error: null matrix\n");
+    } else if ((i < 0) || (j < 0)) {
         printf("Error: negative index\n");
     } else if ((i >= matrix.rowCount) || (j >= matrix.columnCount)) {
         printf("Error: too big index\n");
-    } else if (isNullMatrix(matrix)) {
-        printf("Error: null matrix\n");
     }
     return matrix.data[matrix.columnCount * i + j];
 }
