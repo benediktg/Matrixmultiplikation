@@ -1,8 +1,6 @@
 #include "include/Matrix.h"
 #include "standard_mmul.h"
 
-#include <stddef.h>
-
 Matrix standardMatrixMul(Matrix a, Matrix b)
 {
     if (a.columnCount != b.rowCount) {

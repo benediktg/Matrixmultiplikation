@@ -3,8 +3,6 @@
 
 #include "include/Matrix.h"
 
-#include <stddef.h>
-
 Matrix standardMatrixMul(Matrix a, Matrix b);
 
 #endif // STANDARD_MMUL_H
