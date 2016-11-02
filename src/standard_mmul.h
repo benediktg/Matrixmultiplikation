@@ -4,7 +4,6 @@
 #include "include/Matrix.h"
 
 #include <stddef.h>
-#include <stdlib.h>
 
 Matrix standardMatrixMul(Matrix a, Matrix b);
 

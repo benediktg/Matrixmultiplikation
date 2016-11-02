@@ -2,7 +2,6 @@
 #include "standard_mmul.h"
 
 #include <stddef.h>
-#include <stdlib.h>
 
 Matrix standardMatrixMul(Matrix a, Matrix b)
 {

@@ -1,8 +1,6 @@
 #include "Matrix.h"
 
-#include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 Matrix newMatrix(int rowCount, int columnCount)
 {
@@ -11,10 +9,8 @@ Matrix newMatrix(int rowCount, int columnCount)
         rowCount = 0;
         columnCount = 0;
     }
-    Matrix result;
-    result.rowCount = rowCount;
-    result.columnCount = columnCount;
-    result.data = malloc(rowCount * columnCount * sizeof(double));
+    double array[rowCount * columnCount];
+    Matrix result = {rowCount, columnCount, array};
     return result;
 }
 
