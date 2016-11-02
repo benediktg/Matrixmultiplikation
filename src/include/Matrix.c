@@ -1,6 +1,7 @@
 #include "Matrix.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 Matrix newMatrix(int rowCount, int columnCount)
 {
@@ -9,7 +10,7 @@ Matrix newMatrix(int rowCount, int columnCount)
         rowCount = 0;
         columnCount = 0;
     }
-    double array[rowCount * columnCount];
+    double *array = malloc(rowCount * columnCount * sizeof *array);
     Matrix result = {rowCount, columnCount, array};
     return result;
 }
