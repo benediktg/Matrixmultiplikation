@@ -1,8 +1,11 @@
 #include "matrixmultiplication.h"
 
+#include <stdio.h>
+
 Matrix standardMatrixMul(Matrix a, Matrix b)
 {
     if (a.columnCount != b.rowCount) {
+        printf("Error: wrong matrix dimensions.\n");
         return newMatrix(0, 0);
     }
 

@@ -6,7 +6,7 @@
 Matrix newMatrix(int rowCount, int columnCount)
 {
     if ((rowCount < 0) || (columnCount < 0)) {
-        printf("Error: negative matrix size\n");
+        printf("Error: negative matrix size.\n");
         rowCount = 0;
         columnCount = 0;
     }
@@ -18,8 +18,8 @@ Matrix newMatrix(int rowCount, int columnCount)
 bool isNullMatrix(Matrix matrix)
 {
     if ((matrix.rowCount == 0 )
-            && (matrix.columnCount == 0)
-            && (matrix.data == NULL)) {
+            || (matrix.columnCount == 0)
+            || (matrix.data == NULL)) {
         return true;
     }
     return false;
@@ -36,21 +36,21 @@ bool isSymmetricMatrix(Matrix matrix)
 double getElementValue(Matrix matrix, int i, int j)
 {
     if (isNullMatrix(matrix)) {
-        printf("Error: null matrix\n");
+        printf("Error: null matrix.\n");
     } else if ((i < 0) || (j < 0)) {
-        printf("Error: negative index\n");
+        printf("Error: negative index.\n");
     } else if ((i >= matrix.rowCount) || (j >= matrix.columnCount)) {
-        printf("Error: too big index\n");
+        printf("Error: too big index.\n");
     }
     return matrix.data[matrix.columnCount * i + j];
 }
 
 void setElementValue(Matrix *matrix, int i, int j, double value)
 {
-    if (matrix == NULL) {
-        printf("Error: null matrix\n");
+    if (isNullMatrix(*matrix)) {
+        printf("Error: null matrix.\n");
     } else if ((i < 0) || (j < 0)) {
-        printf("Error: negative index\n");
+        printf("Error: negative index.\n");
     } else if ((i >= matrix->rowCount) || (j >= matrix->columnCount)) {
         printf("Error: too big index\n");
     }
@@ -59,6 +59,10 @@ void setElementValue(Matrix *matrix, int i, int j, double value)
 
 void prettyPrint(Matrix matrix)
 {
+    if (isNullMatrix(matrix)) {
+        printf("[ - ]\n\n");
+        return;
+    }
     for (int i = 0; i < matrix.rowCount; ++i) {
         printf("[ ");
         for (int j = 0; j < matrix.columnCount; ++j) {
