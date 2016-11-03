@@ -1,5 +1,5 @@
-#include "include/Matrix.h"
-#include "standard_mmul.h"
+#include "Matrix.h"
+#include "matrixmultiplication.h"
 
 Matrix standardMatrixMul(Matrix a, Matrix b)
 {

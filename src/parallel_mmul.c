@@ -1,5 +1,5 @@
-#include "include/Matrix.h"
-#include "parallel_mmul.h"
+#include "Matrix.h"
+#include "matrixmultiplication.h"
 
 #include <omp.h>
 

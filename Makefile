@@ -4,8 +4,8 @@ SRCDIR=src
 INCLUDEDIR=src/include
 
 debug:clean
-	$(CC) $(CFLAGS) -g -Wextra $(SRCDIR)/*.c $(INCLUDEDIR)/*.c
+	$(CC) $(CFLAGS) -g -Wextra -I$(INCLUDEDIR) $(SRCDIR)/*.c
 stable:clean
-	$(CC) $(CFLAGS) $(SRCDIR)/*.c $(INCLUDEDIR)/*.c
+	$(CC) $(CFLAGS) -I$(INCLUDEDIR) $(SRCDIR)/*.c
 clean:
 	rm -vfr *~ a.out
