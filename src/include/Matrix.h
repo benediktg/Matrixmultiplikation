@@ -17,7 +17,12 @@ Matrix newMatrix(int rowCount, int columnCount);
 /**
  * Checks if the matrix is similar to a null object.
  */
-bool isNullMatrix(Matrix m);
+bool isNullMatrix(Matrix matrix);
+
+/**
+ * Checks if the matrix is symmetric.
+ */
+bool isSymmetricMatrix(Matrix matrix);
 
 /**
  * Retrieves a value of a matrix element.

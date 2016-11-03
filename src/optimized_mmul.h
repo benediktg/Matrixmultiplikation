@@ -3,4 +3,6 @@
 
 #include "include/Matrix.h"
 
+Matrix optimizedMatrixMul(Matrix a, Matrix b, int termination);
+
 #endif // OPTIMIZED_MMUL_H

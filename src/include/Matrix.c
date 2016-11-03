@@ -15,9 +15,19 @@ Matrix newMatrix(int rowCount, int columnCount)
     return result;
 }
 
-bool isNullMatrix(Matrix m)
+bool isNullMatrix(Matrix matrix)
 {
-    if (m.rowCount == 0 && m.columnCount == 0 && m.data == NULL) {
+    if ((matrix.rowCount == 0 )
+            && (matrix.columnCount == 0)
+            && (matrix.data == NULL)) {
+        return true;
+    }
+    return false;
+}
+
+bool isSymmetricMatrix(Matrix matrix)
+{
+    if (matrix.rowCount == matrix.columnCount) {
         return true;
     }
     return false;

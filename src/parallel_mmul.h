@@ -3,4 +3,6 @@
 
 #include "include/Matrix.h"
 
+Matrix parallelMatrixMul(Matrix a, Matrix b);
+
 #endif // PARALLEL_MMUL_H
