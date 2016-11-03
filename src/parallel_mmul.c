@@ -1,4 +1,3 @@
-#include "Matrix.h"
 #include "matrixmultiplication.h"
 
 #include <omp.h>

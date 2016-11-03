@@ -1,4 +1,3 @@
-#include "Matrix.h"
 #include "matrixmultiplication.h"
 
 Matrix optimizedMatrixMul(Matrix a, Matrix b, int termination)
