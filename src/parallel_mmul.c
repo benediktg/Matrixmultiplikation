@@ -1,7 +1,7 @@
 #include <omp.h>
 #include <stdio.h>
 
-#include "Matrix.h"
+#include "include/Matrix.h"
 
 Matrix parallelMatrixMul(Matrix a, Matrix b)
 {

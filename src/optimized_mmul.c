@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "Matrix.h"
+#include "include/Matrix.h"
 
 Matrix optimizedMatrixMul(Matrix a, Matrix b, int termination)
 {
