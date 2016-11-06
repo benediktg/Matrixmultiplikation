@@ -3,11 +3,22 @@
 
 #include <stdbool.h>
 
+/**
+ * Represents a matrix.
+ */
 typedef struct Matrix {
+    /** count of rows */
     int rowCount;
+    /** count of columns */
     int columnCount;
+    /** the actual matrix which is supposed to have a size of
+     * count of rows times columns */
     double *data;
 } Matrix;
+
+/*****************************
+ * Access and help functions *
+ *****************************/
 
 /**
  * Constructs a Matrix instance and returns it.
@@ -26,11 +37,21 @@ bool isSymmetricMatrix(Matrix matrix);
 
 /**
  * Retrieves a value of a matrix element.
+ *
+ * @param matrix the matrix instance (dimension M × N)
+ * @param i the row number (must be in the interval 0..M-1)
+ * @param j the column number (must be in the interval 0..N-1)
+ * @returns the value of the given element
  */
 double getElementValue(Matrix matrix, int i, int j);
 
 /**
  * Sets a value of a matrix element.
+ *
+ * @param matrix the matrix instance (dimension M × N)
+ * @param i the row number (must be in the interval 0..M–1)
+ * @param j the column number (must be in the interval 0..N–1)
+ * @param value the value to set
  */
 void setElementValue(Matrix *matrix, int i, int j, double value);
 
@@ -41,7 +62,7 @@ void prettyPrint(Matrix matrix);
 
 /*************************
  * Matrix multiplication *
- ************************/
+ *************************/
 
 /**
  * Naive implementation of a matrix multiplication
