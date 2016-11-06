@@ -1,6 +1,6 @@
-#include "matrixmultiplication.h"
-
 #include <stdio.h>
+
+#include "Matrix.h"
 
 Matrix standardMatrixMul(Matrix a, Matrix b)
 {

@@ -39,4 +39,23 @@ void setElementValue(Matrix *matrix, int i, int j, double value);
  */
 void prettyPrint(Matrix matrix);
 
+/*************************
+ * Matrix multiplication *
+ ************************/
+
+/**
+ * Naive implementation of a matrix multiplication
+ */
+Matrix standardMatrixMul(Matrix a, Matrix b);
+
+/**
+ * Cache optimized implemetation of a matrix multiplication
+ */
+Matrix optimizedMatrixMul(Matrix a, Matrix b, int termination);
+
+/**
+ * Parallel implementation of a matrix multiplication
+ */
+Matrix parallelMatrixMul(Matrix a, Matrix b);
+
 #endif // MATRIX_H

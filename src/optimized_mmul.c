@@ -1,10 +1,13 @@
-#include "matrixmultiplication.h"
+#include <stdio.h>
+
+#include "Matrix.h"
 
 Matrix optimizedMatrixMul(Matrix a, Matrix b, int termination)
 {
     if ((a.columnCount != b.rowCount)
             || !(isSymmetricMatrix(a))
             || !(isSymmetricMatrix(b))) {
+        printf("Error: wrong matrix dimensions.\n");
         return newMatrix(0, 0);
     }
 
