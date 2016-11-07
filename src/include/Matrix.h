@@ -21,9 +21,14 @@ typedef struct Matrix {
  *****************************/
 
 /**
- * Constructs a Matrix instance and returns it.
+ * Allocates space for the result of a matrix multiplication.
  */
-Matrix newMatrix(int rowCount, int columnCount);
+Matrix allocMatrix(Matrix a, Matrix b);
+
+/**
+ * Frees up the space of the matrix data.
+ */
+int freeMatrix(Matrix *matrix);
 
 /**
  * Checks if the matrix is similar to a null object.
@@ -58,7 +63,7 @@ void setElementValue(Matrix *matrix, int i, int j, float value);
 /**
  * Prints a representation of the matrix to stdout.
  */
-void prettyPrint(Matrix matrix);
+int prettyPrint(Matrix matrix);
 
 /*************************
  * Matrix multiplication *
@@ -67,16 +72,16 @@ void prettyPrint(Matrix matrix);
 /**
  * Naive implementation of a matrix multiplication
  */
-Matrix standardMatrixMul(Matrix a, Matrix b);
+int standardMatrixMul(Matrix a, Matrix b, Matrix *result);
 
 /**
  * Cache optimized implemetation of a matrix multiplication
  */
-Matrix optimizedMatrixMul(Matrix a, Matrix b, int termination);
+int optimizedMatrixMul(Matrix a, Matrix b, Matrix *result, int termination);
 
 /**
  * Parallel implementation of a matrix multiplication
  */
-Matrix parallelMatrixMul(Matrix a, Matrix b);
+int parallelMatrixMul(Matrix a, Matrix b, Matrix *result);
 
 #endif // MATRIX_H

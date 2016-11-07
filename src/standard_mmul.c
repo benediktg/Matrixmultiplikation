@@ -2,14 +2,13 @@
 
 #include "include/Matrix.h"
 
-Matrix standardMatrixMul(Matrix a, Matrix b)
+int standardMatrixMul(Matrix a, Matrix b, Matrix *result)
 {
     if (a.columnCount != b.rowCount) {
         printf("Error: wrong matrix dimensions.\n");
-        return newMatrix(0, 0);
+        return 1;
     }
 
-    Matrix result = newMatrix(a.rowCount, b.columnCount);
     double sum = 0.0;
     for (int i = 0; i < a.rowCount; ++i) {
         for (int k = 0; k < b.columnCount; ++k) {
@@ -17,8 +16,8 @@ Matrix standardMatrixMul(Matrix a, Matrix b)
             for (int j = 0; j < a.columnCount; ++j) {
                 sum += getElementValue(a, i, j) * getElementValue(b, j, k);
             }
-            setElementValue(&result, i, k, sum);
+            setElementValue(result, i, k, sum);
         }
     }
-    return result;
+    return 0;
 }

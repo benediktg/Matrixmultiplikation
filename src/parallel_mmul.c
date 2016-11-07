@@ -3,14 +3,13 @@
 
 #include "include/Matrix.h"
 
-Matrix parallelMatrixMul(Matrix a, Matrix b)
+int parallelMatrixMul(Matrix a, Matrix b, Matrix *result)
 {
     if (a.columnCount != b.rowCount) {
         printf("Error: wrong matrix dimensions.\n");
-        return newMatrix(0, 0);
+        return 1;
     }
 
-    Matrix result = newMatrix(a.rowCount, b.columnCount);
     // do the parallel execution
-    return result;
+    return 0;
 }

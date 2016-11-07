@@ -3,16 +3,23 @@
 
 #include "include/Matrix.h"
 
-Matrix newMatrix(int rowCount, int columnCount)
+Matrix allocMatrix(Matrix a, Matrix b)
 {
-    if ((rowCount < 0) || (columnCount < 0)) {
+    int rowCount = a.rowCount;
+    int columnCount = b.columnCount;
+    if (rowCount < 0 && columnCount < 0) {
         printf("Error: negative matrix size.\n");
-        rowCount = 0;
-        columnCount = 0;
     }
-    float *array = malloc(rowCount * columnCount * sizeof *array);
-    Matrix result = {rowCount, columnCount, array};
-    return result;
+    float *data = calloc(rowCount * columnCount, sizeof *data);
+    Matrix matrix = {rowCount, columnCount, data};
+    return matrix;
+}
+
+int freeMatrix(Matrix* matrix)
+{
+    free(matrix->data);
+    matrix->data = NULL;
+    return 0;
 }
 
 bool isNullMatrix(Matrix matrix)
@@ -57,11 +64,11 @@ void setElementValue(Matrix *matrix, int i, int j, float value)
     matrix->data[matrix->columnCount * i + j] = value;
 }
 
-void prettyPrint(Matrix matrix)
+int prettyPrint(Matrix matrix)
 {
     if (isNullMatrix(matrix)) {
         printf("[ - ]\n\n");
-        return;
+        return 1;
     }
     for (int i = 0; i < matrix.rowCount; ++i) {
         printf("[ ");
@@ -71,4 +78,5 @@ void prettyPrint(Matrix matrix)
         printf("]\n");
     }
     printf("\n");
+    return 0;
 }
