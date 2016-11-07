@@ -13,7 +13,7 @@ typedef struct Matrix {
     int columnCount;
     /** the actual matrix which is supposed to have a size of
      * count of rows times columns */
-    double *data;
+    float *data;
 } Matrix;
 
 /*****************************
@@ -43,7 +43,7 @@ bool isSymmetricMatrix(Matrix matrix);
  * @param j the column number (must be in the interval 0..N-1)
  * @returns the value of the given element
  */
-double getElementValue(Matrix matrix, int i, int j);
+float getElementValue(Matrix matrix, int i, int j);
 
 /**
  * Sets a value of a matrix element.
@@ -53,7 +53,7 @@ double getElementValue(Matrix matrix, int i, int j);
  * @param j the column number (must be in the interval 0..N–1)
  * @param value the value to set
  */
-void setElementValue(Matrix *matrix, int i, int j, double value);
+void setElementValue(Matrix *matrix, int i, int j, float value);
 
 /**
  * Prints a representation of the matrix to stdout.

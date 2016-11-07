@@ -10,7 +10,7 @@ Matrix newMatrix(int rowCount, int columnCount)
         rowCount = 0;
         columnCount = 0;
     }
-    double *array = malloc(rowCount * columnCount * sizeof *array);
+    float *array = malloc(rowCount * columnCount * sizeof *array);
     Matrix result = {rowCount, columnCount, array};
     return result;
 }
@@ -33,7 +33,7 @@ bool isSymmetricMatrix(Matrix matrix)
     return false;
 }
 
-double getElementValue(Matrix matrix, int i, int j)
+float getElementValue(Matrix matrix, int i, int j)
 {
     if (isNullMatrix(matrix)) {
         printf("Error: null matrix.\n");
@@ -45,7 +45,7 @@ double getElementValue(Matrix matrix, int i, int j)
     return matrix.data[matrix.columnCount * i + j];
 }
 
-void setElementValue(Matrix *matrix, int i, int j, double value)
+void setElementValue(Matrix *matrix, int i, int j, float value)
 {
     if (isNullMatrix(*matrix)) {
         printf("Error: null matrix.\n");
@@ -66,7 +66,7 @@ void prettyPrint(Matrix matrix)
     for (int i = 0; i < matrix.rowCount; ++i) {
         printf("[ ");
         for (int j = 0; j < matrix.columnCount; ++j) {
-            printf("%.1lf ", getElementValue(matrix, i, j));
+            printf("%.1f ", getElementValue(matrix, i, j));
         }
         printf("]\n");
     }
