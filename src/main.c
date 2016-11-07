@@ -2,22 +2,12 @@
 
 #include "include/Matrix.h"
 
+#include "example_matrices.h"
+
 int main(void)
 {
-    float d1[] = {
-        2, 0, 0, 0,
-        0, 2, 0, 0,
-        0, 0, 3, 0,
-        1, 1, 1, 1,
-    };
-    float d2[] = {
-        3, 0, 0, 0,
-        0, 2, 0, 0,
-        0, 0, 2, 0,
-        1, 1, 1, 1,
-    };
-    Matrix m1 = {4, 4, d1};
-    Matrix m2 = {4, 4, d2};
+    Matrix m1 = {MATRIX_SIZE, MATRIX_SIZE, MATRIX_1};
+    Matrix m2 = {MATRIX_SIZE, MATRIX_SIZE, MATRIX_2};
     prettyPrint(m1);
     prettyPrint(m2);
 
