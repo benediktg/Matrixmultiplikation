@@ -20,7 +20,7 @@ $(srcdir)/main.o: $(srcdir)/example_matrices.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(srcdir)/example_matrices.h:
-	src/create_random_matrix.py $(MAT_SIZE) $(srcdir)/
+	python3 bin/create_random_matrix.py $(MAT_SIZE) $(srcdir)/
 
 .PHONY: clean
 clean:
