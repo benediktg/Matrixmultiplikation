@@ -1,10 +1,27 @@
-CC=gcc
-CFLAGS=-Wall -std=c99
-SRCDIR=src
+CC = gcc
+CFLAGS = -Wall -std=c99 -g
+srcdir = src
+SRC = $(wildcard $(srcdir)/*.c)
+OBJ = $(SRC:%.c=%.o)
 
-debug:clean
-	$(CC) $(CFLAGS) -g -Wextra $(SRCDIR)/*.c
-stable:clean
-	$(CC) $(CFLAGS) $(SRCDIR)/*.c
+NAME = a.out
+MAT_SIZE = 1000
+
+default: $(NAME)
+
+a.out: $(OBJ)
+	$(CC) $(OBJ) -o $@
+
+$(OBJ): $(srcdir)/include/Matrix.h
+
+$(srcdir)/main.o: $(srcdir)/example_matrices.h
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(srcdir)/example_matrices.h:
+	src/create_random_matrix.py $(MAT_SIZE) $(srcdir)/
+
+.PHONY: clean
 clean:
-	rm -vfr *~ a.out
+	rm -vfr *~ $(NAME) $(srcdir)/example_matrices.h *.o $(OBJ)

@@ -21,8 +21,10 @@ def randomMatrix(arg):
     return result
 
 
-def main(size):
-    with open('example_matrices.h', 'w') as file:
+def main(size, path=''):
+    if path != '' and not path.endswith('/'):
+        path += '/'
+    with open(path + 'example_matrices.h', 'w') as file:
         file.write('#ifndef EXAMPLE_MATRICES_H\n')
         file.write('#define EXAMPLE_MATRICES_H\n\n')
         file.write('int MATRIX_SIZE = {};\n\n'.format(size))
@@ -35,4 +37,4 @@ def main(size):
         file.write('#endif // EXAMPLE_MATRICES_H\n')
 
 if __name__ == '__main__':
-    main(int(sys.argv[1]))
+    main(int(sys.argv[1]), sys.argv[2])
