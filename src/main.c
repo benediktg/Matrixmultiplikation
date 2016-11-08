@@ -8,12 +8,9 @@ int main(void)
 {
     Matrix m1 = {MATRIX_SIZE, MATRIX_SIZE, MATRIX_1};
     Matrix m2 = {MATRIX_SIZE, MATRIX_SIZE, MATRIX_2};
-    prettyPrint(m1);
-    prettyPrint(m2);
 
     Matrix result = allocMatrix(m1, m2);
     standardMatrixMul(m1, m2, &result);
-    prettyPrint(result);
     freeMatrix(&result);
     return 0;
 }
