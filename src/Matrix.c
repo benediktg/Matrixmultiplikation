@@ -32,7 +32,7 @@ bool isNullMatrix(Matrix matrix)
     return false;
 }
 
-bool isSymmetricMatrix(Matrix matrix)
+bool isSquareMatrix(Matrix matrix)
 {
     if (matrix.rowCount == matrix.columnCount) {
         return true;

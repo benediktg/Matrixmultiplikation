@@ -38,7 +38,7 @@ bool isNullMatrix(Matrix matrix);
 /**
  * Checks if the matrix is symmetric.
  */
-bool isSymmetricMatrix(Matrix matrix);
+bool isSquareMatrix(Matrix matrix);
 
 /**
  * Retrieves a value of a matrix element.
