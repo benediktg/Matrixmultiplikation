@@ -8,33 +8,26 @@ MAX_NUMBER = 10**7
 
 def randomMatrix(arg):
     matrix = list()
-    for i in range(arg):
-        line = list()
-        for j in range(arg):
-            number = random.uniform(-MAX_NUMBER, MAX_NUMBER)
-            element = '{},'.format(number)
-            line.append(element)
-        line.append('\n')
-        wholeLine = ''.join(line)
-        matrix.append(wholeLine)
-    result = ''.join(matrix)
+    for i in range(arg ** 2):
+        number = random.uniform(-MAX_NUMBER, MAX_NUMBER)
+        element = str(number)
+        matrix.append(element)
+    result = ','.join(matrix) + '\n'
     return result
 
 
-def main(size, path=''):
-    if path != '' and not path.endswith('/'):
-        path += '/'
-    with open(path + 'example_matrices.h', 'w') as file:
-        file.write('#ifndef EXAMPLE_MATRICES_H\n')
-        file.write('#define EXAMPLE_MATRICES_H\n\n')
-        file.write('int MATRIX_SIZE = {};\n\n'.format(size))
-        file.write('float MATRIX_1[{}] = {{\n'.format(size * size))
+def main(size, filename='src/matrix_macros.txt'):
+    with open(filename, 'w') as file:
+        file.write('#define MATRIX_SIZE {}\n'.format(size))
+        file.write('#define MATRIX_1 ')
         file.write(randomMatrix(size))
-        file.write('};\n\n')
-        file.write('float MATRIX_2[{}] = {{\n'.format(size * size))
+        file.write('#define MATRIX_2 ')
         file.write(randomMatrix(size))
-        file.write('};\n\n')
-        file.write('#endif // EXAMPLE_MATRICES_H\n')
 
 if __name__ == '__main__':
-    main(int(sys.argv[1]), sys.argv[2])
+    if len(sys.argv) == 3:
+        main(int(sys.argv[1]), sys.argv[2])
+    elif len(sys.argv) == 2:
+        main(int(sys.argv[1]))
+    else:
+        main(512)

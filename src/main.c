@@ -3,12 +3,14 @@
 
 #include "include/Matrix.h"
 
-#include "example_matrices.h"
+#include "matrix_macros.txt"
+float data1[MATRIX_SIZE * MATRIX_SIZE] = {MATRIX_1};
+float data2[MATRIX_SIZE * MATRIX_SIZE] = {MATRIX_2};
 
 int main(void)
 {
-    Matrix m1 = {MATRIX_SIZE, MATRIX_SIZE, MATRIX_1};
-    Matrix m2 = {MATRIX_SIZE, MATRIX_SIZE, MATRIX_2};
+    Matrix m1 = {MATRIX_SIZE, MATRIX_SIZE, data1};
+    Matrix m2 = {MATRIX_SIZE, MATRIX_SIZE, data2};
 
     clock_t start, end;
     float cpu_time_used;

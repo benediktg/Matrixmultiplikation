@@ -5,7 +5,7 @@ SRC = $(wildcard $(srcdir)/*.c)
 OBJ = $(SRC:%.c=%.o)
 
 NAME = a.out
-MAT_SIZE = 500
+MAT_SIZE = 1024
 
 default: $(NAME)
 
@@ -14,14 +14,14 @@ a.out: $(OBJ)
 
 $(OBJ): $(srcdir)/include/Matrix.h
 
-$(srcdir)/main.o: $(srcdir)/example_matrices.h
+$(srcdir)/main.o: $(srcdir)/matrix_macros.txt
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(srcdir)/example_matrices.h:
-	python3 bin/create_random_matrix.py $(MAT_SIZE) $(srcdir)/
+$(srcdir)/matrix_macros.txt:
+	python3 bin/create_random_matrix.py $(MAT_SIZE)
 
 .PHONY: clean
 clean:
-	rm -vfr *~ $(NAME) $(srcdir)/example_matrices.h *.o $(OBJ)
+	rm -vfr *~ $(NAME) $(srcdir)/*.txt *.o $(OBJ)
