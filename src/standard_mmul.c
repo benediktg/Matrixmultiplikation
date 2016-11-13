@@ -9,7 +9,7 @@ int standardMatrixMul(Matrix a, Matrix b, Matrix *result)
         return 1;
     }
 
-    double sum = 0.0;
+    float sum = 0.0;
     for (int i = 0; i < a.rowCount; ++i) {
         for (int k = 0; k < b.columnCount; ++k) {
             sum = 0.0;
