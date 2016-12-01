@@ -14,24 +14,29 @@ int main(void)
 
     clock_t start, end;
     float cpu_time_used;
+    Matrix result1 = allocMatrix(m1, m2);
+    Matrix result2 = allocMatrix(m1, m2);
 
     start = clock();
-    Matrix result = allocMatrix(m1, m2);
+    standardMatrixMul(m1, m2, &result1);
     end = clock();
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
-    printf("time for allocation:  %f seconds\n", cpu_time_used);
+    printf("time for standard:  %f seconds\n", cpu_time_used);
 
     start = clock();
-    standardMatrixMul(m1, m2, &result);
+    optimizedMatrixMul(m1, m2, &result2, 2);
     end = clock();
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
-    printf("time for calculation: %f seconds\n", cpu_time_used);
+    printf("time for optimized: %f seconds\n", cpu_time_used);
 
-    start = clock();
-    freeMatrix(&result);
-    end = clock();
-    cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
-    printf("time for freeing:     %f seconds\n", cpu_time_used);
+    if (areEqualMatrices(result1, result2)) {
+        printf("correct result\n");
+    } else {
+        printf("wrong result\n");
+    }
+
+    freeMatrix(&result1);
+    freeMatrix(&result2);
 
     return 0;
 }
