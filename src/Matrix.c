@@ -10,7 +10,7 @@ Matrix allocMatrix(Matrix a, Matrix b)
     if (rowCount < 0 && columnCount < 0) {
         printf("Error: negative matrix size.\n");
     }
-    float *data = malloc(rowCount * columnCount * sizeof *data);
+    float *data = calloc(rowCount * columnCount, sizeof *data);
     Matrix matrix = {rowCount, columnCount, data};
     return matrix;
 }
