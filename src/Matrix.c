@@ -40,6 +40,26 @@ bool isSquareMatrix(Matrix matrix)
     return false;
 }
 
+bool areEqualMatrices(Matrix a, Matrix b)
+{
+    if (a.rowCount != b.rowCount || a.columnCount != b.columnCount) {
+        return false;
+    }
+    int height = a.rowCount;
+    int width = a.rowCount;
+    float compare;
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < width; ++j) {
+            compare = getElementValue(a, i, j) - getElementValue(b, i, j);
+            if (compare > EPSILON || compare < -EPSILON) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
 float getElementValue(Matrix matrix, int i, int j)
 {
     if (isNullMatrix(matrix)) {

@@ -41,6 +41,16 @@ bool isNullMatrix(Matrix matrix);
 bool isSquareMatrix(Matrix matrix);
 
 /**
+ * Checks if the values and dimensions of matrices a and b are equal.
+ */
+bool areEqualMatrices(Matrix a, Matrix b);
+
+/**
+ * epsilon value for float value comparisons
+ */
+static const float EPSILON = 0.001f;
+
+/**
  * Retrieves a value of a matrix element.
  *
  * @param matrix the matrix instance (dimension M × N)
