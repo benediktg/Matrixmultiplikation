@@ -24,7 +24,7 @@ int main(void)
     printf("time for standard:  %f seconds\n", cpu_time_used);
 
     start = clock();
-    optimizedMatrixMul(m1, m2, &result2, 2);
+    optimizedMatrixMul(m1, m2, &result2, 8);
     end = clock();
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
     printf("time for optimized: %f seconds\n", cpu_time_used);

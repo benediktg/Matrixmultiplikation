@@ -48,7 +48,7 @@ bool areEqualMatrices(Matrix a, Matrix b);
 /**
  * epsilon value for float value comparisons
  */
-static const float EPSILON = 0.001f;
+static const float EPSILON = 0.0001f;
 
 /**
  * Retrieves a value of a matrix element.
