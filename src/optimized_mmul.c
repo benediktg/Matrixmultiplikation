@@ -2,6 +2,14 @@
 
 #include "include/Matrix.h"
 
+int recursiveMatrixMul(Matrix m1, int i1, int j1,
+                       Matrix m2, int i2, int j2,
+                       int size, int t, Matrix *result);
+
+int normalMatrixMul(Matrix m1, int i1, int j1,
+                    Matrix m2, int i2, int j2,
+                    int size, Matrix *result);
+
 int optimizedMatrixMul(Matrix a, Matrix b, Matrix *result, int termination)
 {
     if (a.columnCount != b.rowCount) {
@@ -9,10 +17,73 @@ int optimizedMatrixMul(Matrix a, Matrix b, Matrix *result, int termination)
         return 1;
     } else if (!(isSquareMatrix(a))
             || !(isSquareMatrix(b))) {
-        printf("Error: please provide symmetric matrices.\n");
+        printf("Error: please provide square matrices.\n");
         return 2;
     }
 
-    // do the optimized calculation
+    recursiveMatrixMul(a, 0, 0, b, 0, 0, a.rowCount, termination, result);
+
+    return 0;
+}
+
+int recursiveMatrixMul(Matrix m1, int i1, int j1,
+                       Matrix m2, int i2, int j2,
+                       int size, int t, Matrix *result)
+{
+    if (size % 2 || size == 2 || size <= t) {
+        // break condition: no further splitting reasonable
+        normalMatrixMul(m1, i1, j1, m2, i2, j2, size, result);
+    } else {
+        /*  /G  H\   /K  L\   / GK+HM  GL+HN \
+         *  |    | × |    | = |              |
+         *  \I  J/   \M  N/   \ IK+JM  IL+JN /
+         */
+
+        int s = size / 2;
+
+        // GK
+        recursiveMatrixMul(m1, i1, j1, m2, i2, j2, s, t, result);
+        // + HM
+        recursiveMatrixMul(m1, i1, j1 + s, m2, i2 + s, j2, s, t, result);
+
+        // GL
+        recursiveMatrixMul(m1, i1, j1, m2, i2, j2 + s, s, t, result);
+        // + HN
+        recursiveMatrixMul(m1, i1, j1 + s, m2, i2 + s, j2 + s, s, t, result);
+
+        // IK
+        recursiveMatrixMul(m1, i1 + s, j1, m2, i2, j2, s, t, result);
+        // + JM
+        recursiveMatrixMul(m1, i1 + s, j1 + s, m2, i2 + s, j2, s, t, result);
+
+        // IL
+        recursiveMatrixMul(m1, i1 + s, j1, m2, i2, j2 + s, s, t, result);
+        // + JN
+        recursiveMatrixMul(m1, i1 + s, j1 + s, m2, i2 + s, j2 + s, s, t, result);
+    }
+
+    return 0;
+}
+
+int normalMatrixMul(Matrix m1, int i1, int j1,
+                    Matrix m2, int i2, int j2,
+                    int size, Matrix* result)
+{
+    int rowMax = i1 + size;
+    int colMax = j2 + size;
+    int inColMax;
+    int inRowMax;
+    int resIndex;
+    for (int i = i1; i < rowMax; ++i) {
+        for (int j = j2; j < colMax; ++j) {
+            inRowMax = i2 + size;
+            inColMax = j1 + size;
+            resIndex = m1.columnCount * i + j;
+            for (int k = j1, l = i2; k < inColMax && l < inRowMax; ++k, ++l) {
+                result->data[resIndex]
+                    += getElementValue(m1, i, k) * getElementValue(m2, l, j);
+            }
+        }
+    }
     return 0;
 }
