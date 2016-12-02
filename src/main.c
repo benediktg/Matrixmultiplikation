@@ -30,15 +30,23 @@ int main(int argc, char **argv)
     standardMatrixMul(m1, m2, &result1);
     end = clock();
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
-    printf("time for standard:  %f seconds\n", cpu_time_used);
+    printf("time for standard:   %f seconds\n", cpu_time_used);
 
     start = clock();
     optimizedMatrixMul(m1, m2, &result2, termination);
     end = clock();
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
-    printf("time for optimized: %f seconds\n", cpu_time_used);
+    printf("time for optimized:  %f seconds (termination: %d)\n",
+           cpu_time_used, termination
+    );
 
-    if (areEqualMatrices(result1, result2)) {
+    start = clock();
+    bool equals = areEqualMatrices(result1, result2);
+    end = clock();
+    cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
+    printf("time for comparison: %f seconds\n", cpu_time_used);
+
+    if (equals) {
         printf("correct result\n");
     } else {
         printf("wrong result\n");
