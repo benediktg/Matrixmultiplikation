@@ -5,7 +5,7 @@ SRC = $(wildcard $(srcdir)/*.c)
 OBJ = $(SRC:%.c=%.o)
 
 NAME = a.out
-MAT_SIZE = 1024
+MAT_SIZE = 512
 
 default: $(NAME)
 
