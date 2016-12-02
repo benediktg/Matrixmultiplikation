@@ -69,18 +69,10 @@ int normalMatrixMul(Matrix m1, int i1, int j1,
                     Matrix m2, int i2, int j2,
                     int size, Matrix* result)
 {
-    int rowMax = i1 + size;
-    int colMax = j2 + size;
-    int inColMax;
-    int inRowMax;
-    int resIndex;
-    for (int i = i1; i < rowMax; ++i) {
-        for (int j = j2; j < colMax; ++j) {
-            inRowMax = i2 + size;
-            inColMax = j1 + size;
-            resIndex = m1.columnCount * i + j;
-            for (int k = j1, l = i2; k < inColMax && l < inRowMax; ++k, ++l) {
-                result->data[resIndex]
+    for (int i = i1; i < i1 + size; ++i) {
+        for (int j = j2; j < j2 + size; ++j) {
+            for (int k = j1, l = i2; k < j1 + size && l < i2 + size; ++k, ++l) {
+                result->data[m1.columnCount * i + j]
                     += getElementValue(m1, i, k) * getElementValue(m2, l, j);
             }
         }
