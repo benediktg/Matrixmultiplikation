@@ -25,6 +25,7 @@ int main(int argc, char **argv)
     float cpu_time_used;
     Matrix result1 = allocMatrix(m1, m2);
     Matrix result2 = allocMatrix(m1, m2);
+    Matrix result3 = allocMatrix(m1, m2);
 
     start = clock();
     standardMatrixMul(m1, m2, &result1);
@@ -41,7 +42,14 @@ int main(int argc, char **argv)
     );
 
     start = clock();
-    bool equals = areEqualMatrices(result1, result2);
+    parallelMatrixMul(m1, m2, &result3);
+    end = clock();
+    cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
+    printf("time for parallel:   %f seconds\n", cpu_time_used);
+
+    start = clock();
+    bool equals = areEqualMatrices(result1, result2)
+                  && areEqualMatrices(result2, result3);
     end = clock();
     cpu_time_used = ((float) (end - start)) / CLOCKS_PER_SEC;
     printf("time for comparison: %f seconds\n", cpu_time_used);
@@ -54,6 +62,7 @@ int main(int argc, char **argv)
 
     freeMatrix(&result1);
     freeMatrix(&result2);
+    freeMatrix(&result3);
 
     return 0;
 }
