@@ -15,31 +15,6 @@ Matrix allocMatrix(Matrix a, Matrix b)
     return matrix;
 }
 
-int freeMatrix(Matrix* matrix)
-{
-    free(matrix->data);
-    matrix->data = NULL;
-    return 0;
-}
-
-bool isNullMatrix(Matrix matrix)
-{
-    if ((matrix.rowCount == 0 )
-            || (matrix.columnCount == 0)
-            || (matrix.data == NULL)) {
-        return true;
-    }
-    return false;
-}
-
-bool isSquareMatrix(Matrix matrix)
-{
-    if (matrix.rowCount == matrix.columnCount) {
-        return true;
-    }
-    return false;
-}
-
 bool areEqualMatrices(Matrix a, Matrix b)
 {
     if (a.rowCount != b.rowCount || a.columnCount != b.columnCount) {

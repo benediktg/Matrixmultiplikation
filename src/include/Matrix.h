@@ -2,6 +2,7 @@
 #define MATRIX_H
 
 #include <stdbool.h>
+#include <stdlib.h>
 
 /**
  * Represents a matrix.
@@ -28,17 +29,26 @@ Matrix allocMatrix(Matrix a, Matrix b);
 /**
  * Frees up the space of the matrix data.
  */
-int freeMatrix(Matrix *matrix);
+inline void freeMatrix(Matrix *matrix) {
+    free(matrix->data);
+    matrix->data = NULL;
+}
 
 /**
  * Checks if the matrix is similar to a null object.
  */
-bool isNullMatrix(Matrix matrix);
+inline bool isNullMatrix(Matrix matrix) {
+    return (matrix.rowCount == 0
+            || matrix.columnCount == 0
+            || matrix.data == NULL);
+}
 
 /**
  * Checks if the matrix is symmetric.
  */
-bool isSquareMatrix(Matrix matrix);
+inline bool isSquareMatrix(Matrix matrix) {
+    return (matrix.rowCount == matrix.columnCount);
+}
 
 /**
  * Checks if the values and dimensions of matrices a and b are equal.
