@@ -72,8 +72,8 @@ int normalMatrixMul(Matrix m1, int i1, int j1,
     for (int i = i1; i < i1 + size; ++i) {
         for (int j = j2; j < j2 + size; ++j) {
             for (int k = j1, l = i2; k < j1 + size && l < i2 + size; ++k, ++l) {
-                result->data[m1.columnCount * i + j]
-                    += getElementValue(m1, i, k) * getElementValue(m2, l, j);
+                addToElementValue(result, i, j,
+                        getElementValue(m1, i, k) * getElementValue(m2, l, j));
             }
         }
     }
