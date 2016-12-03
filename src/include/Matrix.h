@@ -45,10 +45,10 @@ bool isSquareMatrix(Matrix matrix);
  */
 bool areEqualMatrices(Matrix a, Matrix b);
 
-/**
- * epsilon value for float value comparisons
- */
-static const float EPSILON = 0.0001f;
+inline bool equalsFloat(float a, float b) {
+    const float EPSILON = 0.000001f;
+    return ((a - b) < EPSILON && (a - b) > -EPSILON);
+}
 
 /**
  * Retrieves a value of a matrix element.
@@ -58,7 +58,10 @@ static const float EPSILON = 0.0001f;
  * @param j the column number (must be in the interval 0..N-1)
  * @returns the value of the given element
  */
-#define getElementValue(matrix, i, j) matrix.data[matrix.columnCount * i + j]
+inline float getElementValue(Matrix matrix, int i, int j)
+{
+    return matrix.data[matrix.columnCount * i + j];
+}
 
 /**
  * Sets a value of a matrix element.
@@ -68,7 +71,10 @@ static const float EPSILON = 0.0001f;
  * @param j the column number (must be in the interval 0..N–1)
  * @param value the value to set
  */
-#define setElementValue(matrix, i, j, value) matrix->data[matrix->columnCount * i + j] = value
+inline void setElementValue(Matrix *matrix, int i, int j, float value)
+{
+    matrix->data[matrix->columnCount * i + j] = value;
+}
 
 /**
  * Prints a representation of the matrix to stdout.

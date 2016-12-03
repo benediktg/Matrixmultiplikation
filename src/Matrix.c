@@ -45,11 +45,10 @@ bool areEqualMatrices(Matrix a, Matrix b)
     if (a.rowCount != b.rowCount || a.columnCount != b.columnCount) {
         return false;
     }
-    float compare;
     for (int i = 0; i < a.rowCount; ++i) {
         for (int j = 0; j < a.columnCount; ++j) {
-            compare = getElementValue(a, i, j) - getElementValue(b, i, j);
-            if (compare > EPSILON || compare < -EPSILON) {
+            if (!equalsFloat(
+                    getElementValue(a, i, j), getElementValue(b, i, j))) {
                 return false;
             }
         }
