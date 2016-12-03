@@ -87,6 +87,19 @@ inline void setElementValue(Matrix *matrix, int i, int j, float value)
 }
 
 /**
+ * Adds a value to a given matrix element.
+ *
+ * @param matrix the matrix instance (dimension M × N)
+ * @param i the row number (must be in the interval 0..M–1)
+ * @param j the column number (must be in the interval 0..N–1)
+ * @param value the value to add
+ */
+inline void addToElementValue(Matrix *matrix, int i, int j, float value)
+{
+    matrix->data[matrix->columnCount * i + j] += value;
+}
+
+/**
  * Prints a representation of the matrix to stdout.
  */
 int prettyPrint(Matrix matrix);
