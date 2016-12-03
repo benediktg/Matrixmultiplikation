@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -std=c99 -O2
+CFLAGS = -Wall -std=c99 -fopenmp -O2
+LDFLAGS = $(CFLAGS)
 srcdir = src
 SRC = $(wildcard $(srcdir)/*.c)
 OBJ = $(SRC:%.c=%.o)
@@ -10,7 +11,7 @@ MAT_SIZE = 512
 default: $(NAME)
 
 a.out: $(OBJ)
-	$(CC) $(OBJ) -o $@
+	$(CC) $(LDFLAGS) $(OBJ) -o $@
 
 $(OBJ): $(srcdir)/include/Matrix.h
 

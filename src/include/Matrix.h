@@ -58,7 +58,7 @@ static const float EPSILON = 0.0001f;
  * @param j the column number (must be in the interval 0..N-1)
  * @returns the value of the given element
  */
-float getElementValue(Matrix matrix, int i, int j);
+#define getElementValue(matrix, i, j) matrix.data[matrix.columnCount * i + j]
 
 /**
  * Sets a value of a matrix element.
@@ -68,7 +68,7 @@ float getElementValue(Matrix matrix, int i, int j);
  * @param j the column number (must be in the interval 0..N–1)
  * @param value the value to set
  */
-void setElementValue(Matrix *matrix, int i, int j, float value);
+#define setElementValue(matrix, i, j, value) matrix->data[matrix->columnCount * i + j] = value
 
 /**
  * Prints a representation of the matrix to stdout.

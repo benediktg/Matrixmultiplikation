@@ -9,9 +9,7 @@ MAX_NUMBER = 10**7
 def randomMatrix(arg):
     matrix = list()
     for i in range(arg ** 2):
-        number = random.uniform(-MAX_NUMBER, MAX_NUMBER)
-        element = str(number)
-        matrix.append(element)
+        matrix.append(str(random.uniform(-MAX_NUMBER, MAX_NUMBER)))
     result = ','.join(matrix) + '\n'
     return result
 

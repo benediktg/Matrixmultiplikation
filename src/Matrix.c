@@ -57,31 +57,6 @@ bool areEqualMatrices(Matrix a, Matrix b)
     return true;
 }
 
-
-float getElementValue(Matrix matrix, int i, int j)
-{
-    if (isNullMatrix(matrix)) {
-        printf("Error: null matrix.\n");
-    } else if ((i < 0) || (j < 0)) {
-        printf("Error: negative index.\n");
-    } else if ((i >= matrix.rowCount) || (j >= matrix.columnCount)) {
-        printf("Error: too big index.\n");
-    }
-    return matrix.data[matrix.columnCount * i + j];
-}
-
-void setElementValue(Matrix *matrix, int i, int j, float value)
-{
-    if (isNullMatrix(*matrix)) {
-        printf("Error: null matrix.\n");
-    } else if ((i < 0) || (j < 0)) {
-        printf("Error: negative index.\n");
-    } else if ((i >= matrix->rowCount) || (j >= matrix->columnCount)) {
-        printf("Error: too big index\n");
-    }
-    matrix->data[matrix->columnCount * i + j] = value;
-}
-
 int prettyPrint(Matrix matrix)
 {
     if (isNullMatrix(matrix)) {
