@@ -2,13 +2,13 @@
 
 #include "include/Matrix.h"
 
-int recursiveMatrixMul(Matrix m1, int i1, int j1,
-                       Matrix m2, int i2, int j2,
-                       int size, int t, Matrix *result);
+void recursiveMatrixMul(Matrix m1, int i1, int j1,
+                        Matrix m2, int i2, int j2,
+                        int size, int t, Matrix *result);
 
-int normalMatrixMul(Matrix m1, int i1, int j1,
-                    Matrix m2, int i2, int j2,
-                    int size, Matrix *result);
+void normalMatrixMul(Matrix m1, int i1, int j1,
+                     Matrix m2, int i2, int j2,
+                     int size, Matrix *result);
 
 int optimizedMatrixMul(Matrix a, Matrix b, Matrix *result, int termination)
 {
@@ -26,9 +26,9 @@ int optimizedMatrixMul(Matrix a, Matrix b, Matrix *result, int termination)
     return 0;
 }
 
-int recursiveMatrixMul(Matrix m1, int i1, int j1,
-                       Matrix m2, int i2, int j2,
-                       int size, int t, Matrix *result)
+void recursiveMatrixMul(Matrix m1, int i1, int j1,
+                        Matrix m2, int i2, int j2,
+                        int size, int t, Matrix *result)
 {
     if (size % 2 || size == 2 || size <= t) {
         // break condition: no further splitting reasonable
@@ -61,14 +61,13 @@ int recursiveMatrixMul(Matrix m1, int i1, int j1,
         // + JN
         recursiveMatrixMul(m1, i1 + s, j1 + s, m2, i2 + s, j2 + s, s, t, result);
     }
-
-    return 0;
 }
 
-int normalMatrixMul(Matrix m1, int i1, int j1,
-                    Matrix m2, int i2, int j2,
-                    int size, Matrix* result)
+void normalMatrixMul(Matrix m1, int i1, int j1,
+                     Matrix m2, int i2, int j2,
+                     int size, Matrix* result)
 {
+    //#pragma omp parallel for collapse(2)
     for (int i = i1; i < i1 + size; ++i) {
         for (int j = j2; j < j2 + size; ++j) {
             for (int k = j1, l = i2; k < j1 + size && l < i2 + size; ++k, ++l) {
@@ -77,5 +76,4 @@ int normalMatrixMul(Matrix m1, int i1, int j1,
             }
         }
     }
-    return 0;
 }
