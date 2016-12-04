@@ -30,7 +30,11 @@ void recursiveMatrixMul(Matrix m1, int i1, int j1,
                         Matrix m2, int i2, int j2,
                         int size, int t, Matrix *result)
 {
-    if (size % 2 || size == 2 || size <= t) {
+    if (size == 1) {
+        addToElementValue(result, i1, j2,
+                          getElementValue(m1, i1, j1)
+                          * getElementValue(m2, i2, j2));
+    } else if (size % 2 || size <= t) {
         // break condition: no further splitting reasonable
         normalMatrixMul(m1, i1, j1, m2, i2, j2, size, result);
     } else {
